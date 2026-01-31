@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<meta charset="UTF-8">
+<title>User Login</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: rgba(150, 206, 213, 0.71);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: #fff;
+    width: 380px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    background-image: url(image3.png);
+}
+
+h2 {
+    margin-bottom: 5px;
+}
+
+p {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #a6c2d4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #18d518;
+}
+
+.link {
+    text-align: center;
+    color: #3498db;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+#forgotForm, #registerForm {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- LOGIN FORM -->
+<div id="loginForm">
+    <h2>User Login</h2>
+    <p>Please enter your details</p>
+
+    <label> <span class="glyphicon glyphicon-envelope"></span> Email</label> 
+    <input type="email" placeholder="Enter your email" >
+
+    <label> <span class="glyphicon glyphicon-lock"></span> Password</label>
+    <input type="password" placeholder="Enter your password" maxlength="8">
+
+    <button> <span class="glyphicon glyphicon-log-in"></span>  Login</button>
+
+    <div class="link" onclick="showForgot()">Forgot password?</div>
+    <div class="link" onclick="showRegister()">Register here!</div>
+</div>
+
+<!-- FORGOT PASSWORD FORM -->
+<div id="forgotForm">
+    <h2>Forgot Password</h2>
+    <p>Reset your password</p>
+
+    <label> <span class="glyphicon glyphicon-envelope"></span> Email</label>
+    <input type="email">
+
+    <label> <span class="glyphicon glyphicon-lock"></span> New Password</label>
+    <input type="password" id="newPass" maxlength="8">
+
+    <label> <span class="glyphicon glyphicon-lock"></span> Confirm Password</label>
+    <input type="password" id="confirmPass" maxlength="8">
+
+    <button onclick="resetPassword()">Submit</button>
+</div>
+
+<!-- REGISTER FORM -->
+<div id="registerForm">
+    <h2>Register</h2>
+    <p>Create a new account</p>
+
+    <label> <span class="glyphicon glyphicon-user"></span> First Name</label>
+    <input type="text">
+
+    <label> <span class="glyphicon glyphicon-user"></span> Last Name</label>
+    <input type="text">
+
+    <label> <span class="glyphicon glyphicon-envelope"></span> Email</label>
+    <input type="email">
+
+    <label> <span class="glyphicon glyphicon-user"></span> Gender</label>
+    <select>
+        <option>select</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+    </select>
+
+    <label> <span class="glyphicon glyphicon-phone"></span> Phone Number</label>
+    <input type="tel" maxlength="10">
+
+    <label> <span class="glyphicon glyphicon-lock"></span> Password</label>
+    <input type="password" id="regPass" maxlength="8">
+
+    <label> <span class="glyphicon glyphicon-lock"></span> Confirm Password</label>
+    <input type="password" id="regConfirm">
+
+    <button onclick="register()">Save</button>
+
+</div>
+
+<script>
+function showLogin() {
+    loginForm.style.display = "block";
+    forgotForm.style.display = "none";
+    registerForm.style.display = "none";
+}
+
+function showForgot() {
+    loginForm.style.display = "none";
+    forgotForm.style.display = "block";
+    registerForm.style.display = "none";
+}
+
+function showRegister() {
+    loginForm.style.display = "none";
+    forgotForm.style.display = "none";
+    registerForm.style.display = "block";
+}
+
+function resetPassword() {
+    if (newPass.value !== confirmPass.value) {
+        alert("Passwords do not match!");
+    } else {
+        alert("Password reset successful!");
+        showLogin();
+    }
+}
+
+function register() {
+    if (regPass.value !== regConfirm.value) {
+        alert("Passwords do not match!");
+    } else {
+        alert("Registration successful!");
+        showLogin();
+    }
+}
+</script>
+
+</body>
+</html>
